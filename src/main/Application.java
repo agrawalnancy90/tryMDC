@@ -7,13 +7,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import java.util.Set;
+import java.util.regex.Pattern;
+
+import utils.Constants;
 
 
 public class Application {
-	
 	
 	
 	public static void main(String[] args) throws IOException {
@@ -39,6 +40,8 @@ public class Application {
 						}
 					}
 				}
+				break;
+				//System.out.println(urls.size());
 			}
 		}
 	}
@@ -53,13 +56,11 @@ public class Application {
 			String resourceName = url.toString();
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				processText(resourceName, inputLine, allUrls);
+				processLine(resourceName, inputLine, allUrls);
 			}
 			in.close();
-			System.out.println(allUrls.toString());
-			System.out.println(allUrls.size());
 		} catch(IOException e) {
-			System.out.println("Error in URL" + url);
+			//System.out.println("Error in URL" + url);
 			int index = url.toString().indexOf(";");
 			if(index != -1) {
 				urls.remove(url);
@@ -69,7 +70,7 @@ public class Application {
 					newUrl = new URL(cleaned);
 					allUrls = retryCleanedUp(newUrl);
 				} catch (MalformedURLException e1) {
-					System.out.println("Malformed after ; removal " + cleaned);
+					//System.out.println("Malformed after ; removal " + cleaned);
 				}
 			}
 		}
@@ -95,31 +96,88 @@ public class Application {
 			String resourceName = url.toString();
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				processText(resourceName, inputLine, allUrls);
+				processLine(resourceName, inputLine, allUrls);
 			}
 			in.close();
 		} catch(IOException e) {
-			System.out.println("Retry Error in URL " + url);
+			//System.out.println("Retry Error in URL " + url);
 		}
 		
 		return allUrls;
 	}
 	
 	
-	private static void processText(String url, String text, Set<String> allUrls) {
+	private static void processLine(String url, String line, Set<String> allUrls) {
+		if(line == null || line.isEmpty())
+			return;
+		line = line.trim();
+		if(line == null || line.isEmpty())
+			return;
 		
-		if(text.startsWith("<script>") || text.endsWith("</script>"))
-				return;
-		String[] tokens = text.split(" ");
+		if(isScript(line))
+			return;
+		
+		
+		String[] tokens = line.split(" ");
 		for(String token: tokens) {
 			if(token != null && !token.trim().isEmpty()) {
 				Set<String> urls = getURLsInString(token);
 				allUrls.addAll(urls);
-				//System.out.println(token);
 			}
 		}
+		
+		/* Remove SGML Tags and script stuff*/
+		if(Pattern.matches("<[^>]*>", line) || line.matches(".*[\\[\\]].*") || 
+				line.matches(".*[\\(\\)].*") || line.matches(".*[\\{\\}].*") ||
+				line.contains("!important;") || line.matches("class=\".*\""))
+			return;
+		
+		System.out.println("line: " +  line);
+		
+		line = line.replaceAll("<[^>]*>", "");
+		line = line.replaceAll("[.]", " ");
+		line = line.replaceAll("nbsp", "");
+		tokens = line.split(" ");
+		//int i = 0;
+		for(String token: tokens) {
+			if(token != null && !token.trim().isEmpty()) {
+				token = removePunctuation(token);
+				if(!token.isEmpty() && !Constants.__STOP_WORDS.contains(token.trim().toLowerCase())) {
+					token = token.trim().toLowerCase();
+					System.out.println(token);
+					//++i;
+				}
+			}
+		}
+		//System.out.println("Count: " + i);
+	}	
+	
+	private static boolean isScript(String line) {
+		if(line.contains("script>"))
+			return true;
+		return false;
 	}
 	
+	private static String removePunctuation(String token) {
+		StringBuilder sb = new StringBuilder();
+		if(token != null && !token.trim().isEmpty()) {
+			char[] letters = token.toCharArray();
+			for(char c: letters) {
+				int x = c;
+				if(Character.isDigit(c) || (!Pattern.matches("\\p{Punct}", String.valueOf(c)) &&
+						isAscii(x))) {
+					sb.append(c);
+				}
+			}
+		}
+		//System.out.println(sb);			
+		return sb.toString();
+	}
+	
+	
+	private static boolean isAscii(int c) {
+		return c <= 0x7F;
+	}
 	
 	private static Set<String> getURLsInString(String str){
 		Set<String> urls = new HashSet<>();;
@@ -157,7 +215,7 @@ public class Application {
 	
 	private static boolean uicDomain(URL checkUrl) {
 		String url = checkUrl.toString();
-		System.out.println("URL: " + url);
+		//System.out.println("URL: " + url);
 		String[] p = url.split("/");
 		if(p[0].startsWith("http")) {
 			if(p[2].endsWith("uic.edu"))
