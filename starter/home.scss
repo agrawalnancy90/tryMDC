@@ -1,10 +1,11 @@
 @import "./common";
 @import "@material/drawer/mdc-drawer";
 @import "@material/list/mdc-list";
-@import "@material/image-list/mdc-image-list";
 @import "@material/ripple/mixins";
 @import "@material/typography/mdc-typography";
 @import "@material/elevation/mdc-elevation";
+@import "@material/notched-outline/mdc-notched-outline";
+
 
 .home {
   display: flex; // Flexbox is used to easily arrange the persistent drawer and content side-by-side
@@ -25,20 +26,6 @@
 }
 
 .product-list {
-  @include mdc-image-list-masonry-columns(4);
-
-  .mdc-image-list__supporting {
-    justify-content: center;
-  }
-
-  .mdc-image-list__item {
-    padding: 10px;
-  }
-
-  .mdc-image-list__label {
-    @include mdc-typography(subtitle2);
-  }
-
   overflow: auto;
   padding: 80px 100px 0;
 }
@@ -86,6 +73,7 @@
   display: block;
   overflow: auto;
   z-index: 0; // Elevate over the drawer
+  width: 100%;
 }
 
 .uic-logo {
@@ -97,4 +85,87 @@
 
 .mdc-list {
   margin: 20px 80px 20px 80px;
+}
+
+.search-header {
+  background-color: #E8E8E8;
+  height: 28%;
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input {
+  border-color: #EAA4A4  
+}
+
+.button-container {
+  width: 75%;
+  padding-top: 5%;
+}
+
+.center-horizontal-vertical {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mdc-button--raised:not(:disabled) {
+  color: white;
+  background-color: black;
+}
+
+.mdc-list-item__secondary-text {
+  font-size: 0.775rem;
+}
+
+a {
+  color: #aaa900;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.spell-check {
+  color: #FF0000;
+  background-color: #F2F2F2;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.incorrect-query {
+  color: #000000;
+}
+
+.spell-check .mdc-button {
+  text-transform: none;
+  font-family: inherit;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.more-pages {
+  text-align: center;
+  padding: 20px 0px 80px 0px;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #EAA4A4;
+  color: white;
+  border: 1px solid #EAA4A4;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.mdc-image-list--masonry .hide-it {
+  display: none;
 }

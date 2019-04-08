@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shrine (MDC Web Example App)</title>
+  <title>UIC Search</title>
   <link rel="shortcut icon" href="https://material.io/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
+  <link rel="stylesheet" href="bundle-login.css">
   <link rel="stylesheet" href="bundle-home.css">
 </head>
 <body class="home">
@@ -34,180 +36,113 @@
       </nav>
     </div>
   </aside>
+
   <div class="shrine-body">
+    <div class="search-header">
+        <form class="center-horizontal-vertical" action="home.html">
+          <div class="button-container">
+            <div class="mdc-text-field mdc-text-field--fullwidth">
+              <input class="mdc-text-field__input"
+                   type="text"
+                   placeholder="Enter search query here . . ."
+                   aria-label="Full-Width Text Field">
+              </div>
+          
+            <button class="mdc-button mdc-button--raised">
+              <span class="mdc-button__label">
+                Search
+              </span>
+            </button>
+          </div>
+      </form>
+
+    </div>
+
+    <div class="spell-check">
+      <form action="home.html">
+        No results found for <span class="incorrect-query">Balckboard UIC</span> &nbsp; Did you mean: <button class="mdc-button">Blackboard UIC </button>?
+      </form>
+    </div>
+
     <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+      <a href="#"><li class="mdc-list-item mdc-ripple-upgraded">
+        <span class="mdc-list-item__text">
+          <span class="mdc-list-item__primary-text">CS Courses Spring 2019</span>
+          <span class="mdc-list-item__secondary-text">9 Jan 2018</span>
+        </span>
+      </li></a>
       <li class="mdc-list-item mdc-ripple-upgraded">
         <span class="mdc-list-item__text">
-          <span class="mdc-list-item__primary-text">Dog Photos</span>
+          <a href="#"><span class="mdc-list-item__primary-text">CS Courses Spring 2019</span></a>
           <span class="mdc-list-item__secondary-text">9 Jan 2018</span>
         </span>
       </li>
-      <li class="mdc-list-divider" role="separator"></li>
-
-        <li class="mdc-list-item mdc-ripple-upgraded">
+      <li class="mdc-list-item mdc-ripple-upgraded">
         <span class="mdc-list-item__text">
-          <span class="mdc-list-item__primary-text">Dog Photos</span>
+          <a href="#"><span class="mdc-list-item__primary-text">CS Courses Spring 2019</span></a>
           <span class="mdc-list-item__secondary-text">9 Jan 2018</span>
         </span>
       </li>
-      <li class="mdc-list-divider" role="separator"></li>
-
-        <li class="mdc-list-item mdc-ripple-upgraded">
+      <li class="mdc-list-item mdc-ripple-upgraded">
         <span class="mdc-list-item__text">
-          <span class="mdc-list-item__primary-text">Dog Photos</span>
+          <a href="#"><span class="mdc-list-item__primary-text">CS Courses Spring 2019</span></a>
           <span class="mdc-list-item__secondary-text">9 Jan 2018</span>
         </span>
       </li>
-      <li class="mdc-list-divider" role="separator"></li>
-
-        <li class="mdc-list-item mdc-ripple-upgraded">
+      <li class="mdc-list-item mdc-ripple-upgraded">
         <span class="mdc-list-item__text">
-          <span class="mdc-list-item__primary-text">Dog Photos</span>
+          <a href="#"><span class="mdc-list-item__primary-text">CS Courses Spring 2019</span></a>
           <span class="mdc-list-item__secondary-text">9 Jan 2018</span>
         </span>
       </li>
-      <li class="mdc-list-divider" role="separator"></li>
-
-        <li class="mdc-list-item mdc-ripple-upgraded">
+      <li class="mdc-list-item mdc-ripple-upgraded">
         <span class="mdc-list-item__text">
-          <span class="mdc-list-item__primary-text">Dog Photos</span>
+          <a href="#"><span class="mdc-list-item__primary-text">CS Courses Spring 2019</span></a>
           <span class="mdc-list-item__secondary-text">9 Jan 2018</span>
         </span>
       </li>
-      <li class="mdc-list-divider" role="separator"></li>
-
-        <li class="mdc-list-item mdc-ripple-upgraded">
+      <li class="mdc-list-item mdc-ripple-upgraded">
         <span class="mdc-list-item__text">
-          <span class="mdc-list-item__primary-text">Dog Photos</span>
+          <a href="#"><span class="mdc-list-item__primary-text">CS Courses Spring 2019</span></a>
           <span class="mdc-list-item__secondary-text">9 Jan 2018</span>
         </span>
       </li>
-      <li class="mdc-list-divider" role="separator"></li>
-
-        <li class="mdc-list-item mdc-ripple-upgraded">
+      <li class="mdc-list-item mdc-ripple-upgraded">
         <span class="mdc-list-item__text">
-          <span class="mdc-list-item__primary-text">Dog Photos</span>
+          <a href="#"><span class="mdc-list-item__primary-text">CS Courses Spring 2019</span></a>
           <span class="mdc-list-item__secondary-text">9 Jan 2018</span>
         </span>
       </li>
-      <li class="mdc-list-divider" role="separator"></li>
-
-        <li class="mdc-list-item mdc-ripple-upgraded">
+      <li class="mdc-list-item mdc-ripple-upgraded">
         <span class="mdc-list-item__text">
-          <span class="mdc-list-item__primary-text">Dog Photos</span>
+          <a href="#"><span class="mdc-list-item__primary-text">CS Courses Spring 2019</span></a>
           <span class="mdc-list-item__secondary-text">9 Jan 2018</span>
         </span>
       </li>
-      <li class="mdc-list-divider" role="separator"></li>
-
-        <li class="mdc-list-item mdc-ripple-upgraded">
+      <li class="mdc-list-item mdc-ripple-upgraded">
         <span class="mdc-list-item__text">
-          <span class="mdc-list-item__primary-text">Dog Photos</span>
+          <a href="#"><span class="mdc-list-item__primary-text">CS Courses Spring 2019</span></a>
           <span class="mdc-list-item__secondary-text">9 Jan 2018</span>
         </span>
       </li>
-      <li class="mdc-list-divider" role="separator"></li>
     </ul>
 
-    <ul class="mdc-image-list mdc-image-list--masonry product-list">
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/ginger-scarf.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Ginger scarf</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/blue-stone-mug.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Blue stone mug</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/cerise-scallop.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Cerise scallop tee</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/chambray-napkins.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Chambray napkins</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/fine-lines.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Fine lines tee</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/garden-strand.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Garden strand</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/gatsby-hat.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Gatsby hat</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/gilt-desk-trio.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Gilt desk trio</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/kitchen-quattro.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Kitchen quattro</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/seabreeze-sweater.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Seabreeze sweater</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/shrug-bag.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Shrug bag</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/stella-sunglasses.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Stella sunglasses</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/surf-and-perf.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Surf and perf shirt</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/vagabond-sack.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Vagabond sack</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/walter-henley.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Walter henley (white)</span>
-        </div>
-      </li>
-      <li class="mdc-image-list__item">
-        <img class="mdc-image-list__image" src="assets/weave-keyring.jpg">
-        <div class="mdc-image-list__supporting">
-          <span class="mdc-image-list__label">Weave keyring</span>
-        </div>
-      </li>
-    </ul>
+    <div class="more-pages">
+      <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a href="#" class="active">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+      </div>
+    </div>
+
   </div>
   <script src="bundle-home.js" async></script>
+  <script src="login.js" async></script>
+  
 </body>
 </html>
