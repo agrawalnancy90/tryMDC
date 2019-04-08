@@ -11,7 +11,3 @@ Install Project Dependencies and Start Server
 
 
 Backend:
-1. git clone git://github.com/requests/requests.git
-2. cd requests
-3. pip install .
-4. 
