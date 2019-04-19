@@ -27,6 +27,7 @@
     "@material/ripple": "^1.0.1",
     "@material/textfield": "^1.0.1",
     "@material/typography": "^1.0.0",
+    "child_process": "^1.0.2",
     "material-components-web": "^1.1.0"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "bin": {
+    "se-test": "jdeploy-bundle/jdeploy.js"
+  },
+  "author": "",
+  "description": "",
+  "preferGlobal": true,
+  "repository": "",
+  "version": "1.0.0",
+  "jdeploy": {
+    "jar": "testjar.jar"
+  },
+  "dependencies": {
+    "shelljs": "^0.7.5"
+  },
+  "license": "ISC",
+  "name": "se-test",
+  "files": [
+    "jdeploy-bundle"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
