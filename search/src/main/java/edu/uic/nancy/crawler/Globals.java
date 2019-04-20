@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Globals {
 	
-	public static int N = 10; 
+	public static int N = 100; 
 	public static double collectionSize = 1;
 	public static Map<String, List<String>> invertedIndex = new HashMap<>();
 	public static Map<String, Map<String, Double>> tfMap = new HashMap<>();

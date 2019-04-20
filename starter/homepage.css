@@ -5,3 +5,12 @@
 #spell-check-div {
 	display: none;
 }
+
+#pagination-div {
+	display: none;
+}
+
+.no-results {
+	color: red;
+	font-size: 1.5em;
+}

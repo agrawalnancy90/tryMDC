@@ -94,6 +94,8 @@ public class Crawler {
 							urls.add(u);
 							urlQueue.offer(u);
 						}
+						if(urls.size() >= Globals.N)
+							break;
 					}
 				}
 			}
@@ -334,7 +336,7 @@ public class Crawler {
 				}
 				if(inputLine.toLowerCase().contains("</p>")) {
 					if(!(excerpt.replace("<p>", "").replace("</p>", "").trim().isEmpty())) {
-						System.out.println("breaking*******");
+						//System.out.println("breaking*******");
 						break;
 					} else {
 						excerpt = "";

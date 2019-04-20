@@ -25,13 +25,13 @@ public class QueryController {
 		System.out.println(query);
 		SearchQuery q = new SearchQuery(query);
 		List<SearchResult> allResults = retrievalService.getResultsByQuery(q);
+		
 		return allResults;		
 	}
 
 	@CrossOrigin(origins = "*")
 	@GetMapping("/test")
 	public String getHello(){
-		
 		return "HelloWorld!";
 				
 	}
