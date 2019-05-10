@@ -11,6 +11,7 @@ public class TextProcessor {
 		List<String> processedTokens = new ArrayList<>();
 		for(String token: tokens) {
 			token = removePunctuation(token);
+			token = removeNumbers(token);
 			if(!token.isEmpty() && !Constants.__STOP_WORDS.contains(token.trim().toLowerCase())) {
 				token = token.trim().toLowerCase();
 				if(token.length() > 2) {
@@ -25,6 +26,18 @@ public class TextProcessor {
 		return processedTokens;
 	}
 	
+	
+	private static String removeNumbers(String token) {
+		String s = "";
+		if(token != null && !token.trim().isEmpty()) {
+			char[] letters = token.toCharArray();
+			for(char c: letters) {
+				if(!Character.isDigit(c))
+					s += c;
+				}
+		}
+		return s;
+	}
 	
 	private static String getPorterStem(String token) {
 		PorterStemmer stemmer = new PorterStemmer();

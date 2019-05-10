@@ -19,15 +19,19 @@ import edu.uic.nancy.search.models.SearchResult;
 @Service
 public class RetrievalService {
 	
-	public List<SearchResult> getResultsByQuery(SearchQuery query) {
-		
+	public List<SearchResult> getResultsByQuery(SearchQuery query) {	
 		Map<String, Double> resultWeightsMap = retrieve(query.getQuery());
-		System.out.println(resultWeightsMap.toString());
 		List<SearchResult> results = new ArrayList<>();
+		int c = 0;
+		
 		for(String url: resultWeightsMap.keySet()) {
-			SearchResult r = new SearchResult(Globals.pageDataMap.get(url).get(0), 
+			++c;
+			/*SearchResult r = new SearchResult(Globals.pageDataMap.get(url).get(0), 
 					Globals.pageDataMap.get(url).get(1),
-					url);
+					url);*/
+			if(c > 100)
+				return results;
+			SearchResult r = new SearchResult(url," ", url);
 			results.add(r);
 		}
 				
@@ -36,7 +40,6 @@ public class RetrievalService {
 	
 	
 	private Map<String, Double> retrieve(String query) {
-		//List<SearchResult> searchResults = new ArrayList<>();
 		List<String> tokens = TextProcessor.preprocessLine(query);
 		
 		double queryVectorLength = 0;
@@ -45,8 +48,6 @@ public class RetrievalService {
 			queryVectorLength += (w*w);
 		}
 		
-		//System.out.println(queryMap);
-		//System.out.println("qVectorLen : " + queryVectorLength);
 		Map<String, Double> resultWeightsMap = new HashMap<>();
 		
 		for(String token: tokens) {
@@ -55,11 +56,8 @@ public class RetrievalService {
 				for(String doc: docs) {
 					Map<String, Double> fMap = Globals.tfMap.get(doc);
 					double tf = fMap.get(token) / Globals.maxTfMap.get(doc);
-					//System.out.println("Globals.invertedIndex.get(token).size() : " + Globals.invertedIndex.get(token).size());
-					double idf = Math.log(Globals.collectionSize/Globals.invertedIndex.get(token).size())/ Math.log(2);
-					//System.out.println("tf: " + tf + " idf: " + idf);
+					double idf = Math.log(Globals.maxTfMap.size()/Globals.invertedIndex.get(token).size())/ Math.log(2);
 					double w = tf*idf;
-					//System.out.println("w: " + w);
 					resultWeightsMap.merge(doc, w * queryMap.get(token), (a, b) -> a + b);
 				}
 			}
@@ -91,8 +89,8 @@ public class RetrievalService {
 		for(String token: queryMap.keySet()) {
 			tf = queryMap.get(token) / maxFreq;
 			if(Globals.invertedIndex.containsKey(token)) {
-				System.out.println("collectionSize: " + Globals.collectionSize);
-				idf = Math.log(Globals.collectionSize/Globals.invertedIndex.get(token).size())/ Math.log(2);
+				//System.out.println("collectionSize: " + Globals.collectionSize);
+				idf = Math.log(Globals.maxTfMap.size()/Globals.invertedIndex.get(token).size())/ Math.log(2);
 			}
 			w = tf * idf;
 			queryMap.put(token, w);
